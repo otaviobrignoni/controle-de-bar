@@ -10,13 +10,20 @@
 <hr />
 <div class="row justify-content-center my-5">
     <div class="col-md-6">
-        <p>Você deseja realmente excluir a mesa "@Model.Numero"?</p>
+        <div class="card">
+            <div class="card-body p-md-5">
+                <h3>Formulário de Exclusão</h3>
 
-        <form action="/mesas/excluir/@Model.Id" method="post">
-            <div class="form-group d-flex align-items-center justify-content-end gap-3 mt-5">
-                <a href="/mesas">Voltar para a listagem</a>
-                <button type="submit" class="btn btn-primary px-5">Confirmar</button>
+
+                <p class="mt-4">Você deseja realmente excluir a mesa "@Model.Numero"?</p>
+
+                <form action="/mesas/excluir/@Model.Id" method="post">
+                    <div class="form-group d-flex align-items-center justify-content-end gap-3 mt-5">
+                        <a href="/mesas">Voltar para a listagem</a>
+                        <button type="submit" class="btn btn-primary px-5">Confirmar</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
