@@ -8,7 +8,7 @@
 }
 
 <p>
-    <a class="btn btn-primary px-4" href="/mesas/cadastrar">
+    <a class="btn btn-primary px-4 rounded-4" href="/mesas/cadastrar">
         <i class="bi bi-plus"></i>
         Cadastrar Novo/a
     </a>
@@ -26,13 +26,13 @@
                     <p class="card-text"><span class="fw-semibold">Quantidade de Assentos:</span> @item.Capacidade</p>
 
                     <span class="d-flex gap-1 justify-content-end mt-4">
-                        <a href="/mesas/detalhes/@item.Id" class="btn btn-secondary">
+                        <a href="/mesas/detalhes/@item.Id" class="btn btn-secondary rounded-circle opcao-card">
                             <i class="bi bi-search"></i>
                         </a>
-                        <a href="/mesas/editar/@item.Id" class="btn btn-primary">
+                        <a href="/mesas/editar/@item.Id" class="btn btn-primary rounded-circle opcao-card">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a href="/mesas/excluir/@item.Id" class="btn btn-danger">
+                        <a href="/mesas/excluir/@item.Id" class="btn btn-danger rounded-circle opcao-card">
                             <i class="bi bi-trash"></i>
                         </a>
                     </span>

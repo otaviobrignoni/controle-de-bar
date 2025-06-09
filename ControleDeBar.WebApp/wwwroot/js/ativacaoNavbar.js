@@ -7,9 +7,9 @@
 
         if (currentPath === linkPath || currentPath.startsWith(linkPath + "/")) {
             link.classList.remove('nav-link', 'text-primary');
-            link.classList.add('btn', 'btn-primary');
+            link.classList.add('btn', 'btn-primary', 'rounded-4');
         } else {
-            link.classList.remove('btn', 'btn-primary');
+            link.classList.remove('btn', 'btn-primary', 'rounded-4');
             link.classList.add('nav-link', 'text-primary');
         }
     });
