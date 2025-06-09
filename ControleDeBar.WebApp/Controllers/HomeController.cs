@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ControleDeBar.Dominio.ModuloMesa;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeBar.WebApp.Controllers;
 

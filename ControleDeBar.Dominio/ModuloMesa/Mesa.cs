@@ -1,4 +1,4 @@
-﻿using ControleDeBar.ConsoleApp.Compartilhado;
+﻿using ControleDeBar.Dominio.Compartilhado;
 
 namespace ControleDeBar.Dominio.ModuloMesa;
 
