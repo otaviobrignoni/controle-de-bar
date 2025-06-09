@@ -1,0 +1,28 @@
+﻿@using ControleDeBar.WebApp.Models
+
+@model EditarMesaViewModel
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Edição de Mesa";
+}
+
+<hr />
+<div class="row justify-content-center my-5">
+    <div class="col-md-8">
+        <form action="/mesas/editar/@Model.Id" method="post">
+            <div class="form-group d-grid gap-2">
+                <label for="Numero" class="control-label fs-5">Número:</label>
+                <input name="Numero" class="form-control" type="number" value="@Model.Numero"/>
+            </div>
+            <div class="form-group d-grid gap-2 mt-3">
+                <label for="Capacidade" class="control-label fs-5">Capacidade:</label>
+                <input name="Capacidade" class="form-control" type="number" value="@Model.Capacidade" />
+            </div>
+            <div class="form-group d-flex align-items-center justify-content-end gap-3 mt-5">
+                <a href="/mesas">Voltar para a listagem</a>
+                <button type="submit" class="btn btn-primary px-5">Confirmar</button>
+            </div>
+        </form>
+    </div>
+</div>
