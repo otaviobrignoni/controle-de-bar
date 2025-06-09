@@ -20,16 +20,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav gap-2 ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/mesas">Mesas</a>
+                        <a class="nav-link text-primary fw-semibold" href="/mesas">Mesas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/garcons">Garçons</a>
+                        <a class="nav-link text-primary fw-semibold" href="/garcons">Garçons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/produtos">Produtos</a>
+                        <a class="nav-link text-primary fw-semibold" href="/produtos">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/contas">Contas</a>
+                        <a class="nav-link text-primary fw-semibold" href="/contas">Contas</a>
                     </li>
                 </ul>
             </div>
@@ -39,11 +39,11 @@
     <header class="container my-4">
         <h2>@ViewBag.Titulo</h2>
     </header>
-    <main class="container">
+    <main class="container my-4">
         @RenderBody()
     </main>
 
     <script src="~/lib/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
-@*     <script src="~/js/ativacaoNavbar.js"></script> *@
+    <script src="~/js/ativacaoNavbar.js"></script>
 </body>
 </html>
