@@ -29,7 +29,6 @@ public class MesaController : Controller
         return View(visualizarVM);
     }
 
-
     [HttpGet("cadastrar")]
     public IActionResult Cadastrar()
     {
