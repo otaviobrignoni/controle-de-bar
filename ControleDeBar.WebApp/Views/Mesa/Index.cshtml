@@ -8,7 +8,7 @@
 }
 
 <p>
-    <a class="btn btn-primary px-4 rounded-4" href="/mesas/cadastrar">
+    <a class="btn btn-primary px-4" href="/mesas/cadastrar">
         <i class="bi bi-plus"></i>
         Cadastrar Novo/a
     </a>
@@ -20,7 +20,7 @@
     @foreach (var item in Model.Registros)
     {
         <div class="col-12 col-md-3">
-            <div class="card rounded-4 border-0">
+            <div class="card border-0">
                 <div class="card-body">
                     <h5 class="card-title">Mesa: #@item.Numero</h5>
                     <p class="card-text"><span class="fw-semibold">Quantidade de Assentos:</span> @item.Capacidade</p>
