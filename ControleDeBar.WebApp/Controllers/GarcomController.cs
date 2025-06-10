@@ -2,6 +2,7 @@
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
+using ControleDeBar.WebApp.Extensions;
 using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,8 +29,50 @@ public class GarcomController : Controller
         return View(visualizarVM);
     }
 
+    [HttpGet("cadastrar")]
+    public IActionResult Cadastrar()
+    {
+        var cadastrarVM = new CadastrarGarcomViewModel();
+
+        return View(cadastrarVM);
+    }
+
+    [HttpPost("cadastrar")]
+    public IActionResult Cadastrar(CadastrarGarcomViewModel cadastrarVM)
+    {
+        var entidade = cadastrarVM.ParaEntidade();
+
+        repositorioGarcom.CadastrarRegistro(entidade);
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet("editar/{id:guid}")]
+    public ActionResult Editar(Guid id)
+    {
+        var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
+
+        var editarVM = new EditarGarcomViewModel(
+            id,
+            registroSelecionado.Nome,
+            registroSelecionado.Cpf
+        );
+
+        return View(editarVM);
+    }
+
+    [HttpPost("editar/{id:guid}")]
+    public ActionResult Editar(Guid id, EditarGarcomViewModel editarVM)
+    {
+        var entidadeEditada = editarVM.ParaEntidade();
+
+        repositorioGarcom.EditarRegistro(id, entidadeEditada);
+
+        return RedirectToAction(nameof(Index));
+    }
+
     [HttpGet("excluir/{id:guid}")]
-    public ActionResult Excluir(Guid id)
+    public IActionResult Excluir(Guid id)
     {
         var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
 
@@ -39,7 +82,7 @@ public class GarcomController : Controller
     }
 
     [HttpPost("excluir/{id:guid}")]
-    public ActionResult ExcluirConfirmado(Guid id)
+    public IActionResult ExcluirConfirmado(Guid id)
     {
         repositorioGarcom.ExcluirRegistro(id);
 
@@ -47,7 +90,7 @@ public class GarcomController : Controller
     }
 
     [HttpGet("detalhes/{id:guid}")]
-    public ActionResult Detalhes(Guid id)
+    public IActionResult Detalhes(Guid id)
     {
         var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
 
