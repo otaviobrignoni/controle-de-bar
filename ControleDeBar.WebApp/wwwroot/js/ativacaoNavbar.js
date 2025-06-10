@@ -1,16 +1,16 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    var currentPath = window.location.pathname.toLowerCase();
-    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const enderecoAtual = window.location.pathname.toLowerCase();
+    const linksNavbar = document.querySelectorAll('.navbar-nav .nav-link');
 
-    navLinks.forEach(function (link) {
-        var linkPath = link.getAttribute('href').toLowerCase();
+    for (const link in linksNavbar) {
+        const atributoHref = link.getAttribute('href').toLowerCase();
 
-        if (currentPath === linkPath || currentPath.startsWith(linkPath + "/")) {
+        if (enderecoAtual === atributoHref || enderecoAtual.startsWith(atributoHref + "/")) {
             link.classList.remove('nav-link', 'text-primary');
             link.classList.add('btn', 'btn-primary', 'rounded-4');
         } else {
             link.classList.remove('btn', 'btn-primary', 'rounded-4');
             link.classList.add('nav-link', 'text-primary');
         }
-    });
+    }
 });
