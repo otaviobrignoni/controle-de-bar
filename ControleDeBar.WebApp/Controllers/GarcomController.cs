@@ -1,5 +1,4 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
-using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
 using ControleDeBar.WebApp.Extensions;
@@ -45,13 +44,13 @@ public class GarcomController : Controller
 
         foreach (var item in registros)
         {
-            if (item.Nome == cadastrarVM.Nome)
+            if (item.Nome.Equals(cadastrarVM.Nome))
             {
                 ModelState.AddModelError("CadastroUnico", "Já existe um garçom registrado com este nome.");
                 break;
             }
 
-            if (item.Cpf == cadastrarVM.Cpf)
+            if (item.Cpf.Equals(cadastrarVM.Cpf))
             {
                 ModelState.AddModelError("CadastroUnico", "Já existe um garçom registrado com este CPF.");
                 break;
@@ -90,13 +89,13 @@ public class GarcomController : Controller
 
         foreach (var item in registros)
         {
-            if (item.Id != id && item.Nome == editarVM.Nome)
+            if (!item.Id.Equals(id) && item.Nome.Equals(editarVM.Nome))
             {
                 ModelState.AddModelError("CadastroUnico", "Já existe um garçom registrado com este nome.");
                 break;
             }
 
-            if (item.Id != id && item.Cpf == editarVM.Cpf)
+            if (!item.Id.Equals(id) && item.Cpf.Equals(editarVM.Cpf))
             {
                 ModelState.AddModelError("CadastroUnico", "Já existe um garçom registrado com este CPF.");
                 break;
