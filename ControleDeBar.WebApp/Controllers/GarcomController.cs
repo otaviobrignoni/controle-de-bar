@@ -40,6 +40,11 @@ public class GarcomController : Controller
     [HttpPost("cadastrar")]
     public IActionResult Cadastrar(CadastrarGarcomViewModel cadastrarVM)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(cadastrarVM);
+        }
+
         var entidade = cadastrarVM.ParaEntidade();
 
         repositorioGarcom.CadastrarRegistro(entidade);
