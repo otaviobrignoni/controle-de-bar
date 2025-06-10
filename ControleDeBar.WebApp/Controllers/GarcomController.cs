@@ -38,6 +38,7 @@ public class GarcomController : Controller
     }
 
     [HttpPost("cadastrar")]
+    [ValidateAntiForgeryToken]
     public IActionResult Cadastrar(CadastrarGarcomViewModel cadastrarVM)
     {
         var registros = repositorioGarcom.SelecionarRegistros();
@@ -82,13 +83,14 @@ public class GarcomController : Controller
     }
 
     [HttpPost("editar/{id:guid}")]
+    [ValidateAntiForgeryToken]
     public ActionResult Editar(Guid id, EditarGarcomViewModel editarVM)
     {
         var registros = repositorioGarcom.SelecionarRegistros();
 
         foreach (var item in registros)
         {
-            if (item.Id != id  && item.Nome == editarVM.Nome)
+            if (item.Id != id && item.Nome == editarVM.Nome)
             {
                 ModelState.AddModelError("CadastroUnico", "Já existe um garçom registrado com este nome.");
                 break;
