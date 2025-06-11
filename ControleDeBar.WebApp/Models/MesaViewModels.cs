@@ -22,7 +22,7 @@ public class CadastrarMesaViewModel : FormularioMesaViewModel
     public CadastrarMesaViewModel(int numero, int capacidade) : this()
     {
         Numero = numero;
-        Capacidade = numero;
+        Capacidade = capacidade;
     }
 }
 
@@ -36,7 +36,7 @@ public class EditarMesaViewModel : FormularioMesaViewModel
     {
         Id = id;
         Numero = numero;
-        Capacidade = numero;
+        Capacidade = capacidade;
     }
 }
 
@@ -81,7 +81,7 @@ public class DetalhesMesaViewModel
     {
         Id = id;
         Numero = numero;
-        Capacidade = numero;
+        Capacidade = capacidade;
     }
 }
 
