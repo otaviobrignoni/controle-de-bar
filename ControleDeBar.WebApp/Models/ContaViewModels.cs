@@ -164,3 +164,21 @@ public class AdicionarPedidoViewModel
     public Guid IdProduto { get; set; }
     public int QuantidadeSolicitada { get; set; }
 }
+
+public class FaturamentoViewModel
+{
+    public List<DetalhesContaViewModel> Registros { get; set; }
+    public decimal Total { get; set; }
+
+    public FaturamentoViewModel(List<Conta> contas)
+    {
+        Registros = new List<DetalhesContaViewModel>();
+
+        foreach (var c in contas)
+        {
+            Total += c.CalcularValorTotal();
+
+            Registros.Add(c.ParaDetalhesVM());
+        }
+    }
+}

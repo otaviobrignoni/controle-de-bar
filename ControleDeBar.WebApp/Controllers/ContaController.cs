@@ -161,4 +161,17 @@ public class ContaController : Controller
 
         return View("GerenciarPedidos", gerenciarPedidosVm);
     }
+
+    [HttpGet("faturamento")]
+    public IActionResult Faturamento(DateTime? data)
+    {
+        if (!data.HasValue)
+            return View();
+
+        var registros = repositorioConta.SelecionarContasPorPeriodo(data.GetValueOrDefault());
+
+        var faturamentoVM = new FaturamentoViewModel(registros);
+
+        return View(faturamentoVM);
+    }
 }
