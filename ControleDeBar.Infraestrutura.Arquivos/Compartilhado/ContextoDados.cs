@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Dominio.ModuloGarcom;
-using ControleDeBar.Dominio.ModuloProduto;
-using ControleDeBar.Dominio.ModuloConta;
+using ControleDeBar.Dominio.TableModule;
+using ControleDeBar.Dominio.WaiterModule;
+using ControleDeBar.Dominio.ProductModule;
+using ControleDeBar.Dominio.AccountModule;
 
 namespace ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 
@@ -12,17 +12,17 @@ public class ContextoDados
     private string pastaArmazenamento = "C:\\temp";
     private string arquivoArmazenamento = "dados-controle-bar.json";
 
-    public List<Mesa> Mesas { get; set; }
-    public List<Garcom> Garcons { get; set; }
-    public List<Produto> Produtos { get; set; }
-    public List<Conta> Contas { get; set; }
+    public List<Table> Tables { get; set; }
+    public List<Waiter> Waiters { get; set; }
+    public List<Product> Products { get; set; }
+    public List<Account> Accounts { get; set; }
 
     public ContextoDados()
     {
-        Mesas = new List<Mesa>();
-        Garcons = new List<Garcom>();
-        Produtos = new List<Produto>();
-        Contas = new List<Conta>();
+        Tables = new List<Table>();
+        Waiters = new List<Waiter>();
+        Products = new List<Product>();
+        Accounts = new List<Account>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -67,9 +67,9 @@ public class ContextoDados
 
         if (contextoArmazenado == null) return;
 
-        Mesas = contextoArmazenado.Mesas;
-        Garcons = contextoArmazenado.Garcons;
-        Produtos = contextoArmazenado.Produtos;
-        Contas = contextoArmazenado.Contas;
+        Tables = contextoArmazenado.Tables;
+        Waiters = contextoArmazenado.Waiters;
+        Products = contextoArmazenado.Products;
+        Accounts = contextoArmazenado.Accounts;
     }
 }
