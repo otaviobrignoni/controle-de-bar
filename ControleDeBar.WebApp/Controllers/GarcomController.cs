@@ -10,18 +10,18 @@ namespace ControleDeBar.WebApp.Controllers;
 [Route("garcons")]
 public class GarcomController : Controller
 {
-    private readonly ContextoDados contextoDados;
-    private readonly IRepositorioGarcom repositorioGarcom;
+    private readonly ContextoDados ContextoDados;
+    private readonly IRepositorioGarcom RepositorioGarcom;
 
-    public GarcomController()
+    public GarcomController(ContextoDados contextoDados, IRepositorioGarcom repositorioGarcom)
     {
-        contextoDados = new ContextoDados(true);
-        repositorioGarcom = new RepositorioGarcomEmArquivo(contextoDados);
+        ContextoDados = contextoDados;
+        RepositorioGarcom = repositorioGarcom;
     }
 
     public IActionResult Index()
     {
-        var registros = repositorioGarcom.SelecionarRegistros();
+        var registros = RepositorioGarcom.SelecionarRegistros();
 
         var visualizarVM = new VisualizarGarconsViewModel(registros);
 
@@ -40,7 +40,7 @@ public class GarcomController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Cadastrar(CadastrarGarcomViewModel cadastrarVM)
     {
-        var registros = repositorioGarcom.SelecionarRegistros();
+        var registros = RepositorioGarcom.SelecionarRegistros();
 
         foreach (var item in registros)
         {
@@ -62,7 +62,7 @@ public class GarcomController : Controller
 
         var entidade = cadastrarVM.ParaEntidade();
 
-        repositorioGarcom.CadastrarRegistro(entidade);
+        RepositorioGarcom.CadastrarRegistro(entidade);
 
         return RedirectToAction(nameof(Index));
     }
@@ -70,7 +70,7 @@ public class GarcomController : Controller
     [HttpGet("editar/{id:guid}")]
     public ActionResult Editar(Guid id)
     {
-        var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioGarcom.SelecionarRegistroPorId(id);
 
         var editarVM = new EditarGarcomViewModel(
             id,
@@ -85,7 +85,7 @@ public class GarcomController : Controller
     [ValidateAntiForgeryToken]
     public ActionResult Editar(Guid id, EditarGarcomViewModel editarVM)
     {
-        var registros = repositorioGarcom.SelecionarRegistros();
+        var registros = RepositorioGarcom.SelecionarRegistros();
 
         foreach (var item in registros)
         {
@@ -107,7 +107,7 @@ public class GarcomController : Controller
 
         var entidadeEditada = editarVM.ParaEntidade();
 
-        repositorioGarcom.EditarRegistro(id, entidadeEditada);
+        RepositorioGarcom.EditarRegistro(id, entidadeEditada);
 
         return RedirectToAction(nameof(Index));
     }
@@ -115,7 +115,7 @@ public class GarcomController : Controller
     [HttpGet("excluir/{id:guid}")]
     public IActionResult Excluir(Guid id)
     {
-        var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioGarcom.SelecionarRegistroPorId(id);
 
         var excluirVM = new ExcluirGarcomViewModel(registroSelecionado.Id, registroSelecionado.Nome);
 
@@ -125,7 +125,7 @@ public class GarcomController : Controller
     [HttpPost("excluir/{id:guid}")]
     public IActionResult ExcluirConfirmado(Guid id)
     {
-        repositorioGarcom.ExcluirRegistro(id);
+        RepositorioGarcom.ExcluirRegistro(id);
 
         return RedirectToAction(nameof(Index));
     }
@@ -133,7 +133,7 @@ public class GarcomController : Controller
     [HttpGet("detalhes/{id:guid}")]
     public IActionResult Detalhes(Guid id)
     {
-        var registroSelecionado = repositorioGarcom.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioGarcom.SelecionarRegistroPorId(id);
 
         var detalhesVM = new DetalhesGarcomViewModel(
             id,

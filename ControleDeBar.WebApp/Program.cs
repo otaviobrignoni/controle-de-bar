@@ -1,3 +1,14 @@
+using ControleDeBar.Dominio.ModuloConta;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infraestrura.Arquivos.Compartilhado;
+using ControleDeBar.Infraestrura.Arquivos.ModuloMesa;
+using ControleDeBar.Infraestrutura.Arquivos.ModuloConta;
+using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
+using ControleDeBar.Infraestrutura.Arquivos.ModuloProduto;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace ControleDeBar.WebApp;
 
 public class Program
@@ -7,6 +18,13 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddScoped(_ => new ContextoDados(true));
+        builder.Services.AddScoped<IRepositorioGarcom, RepositorioGarcomEmArquivo>();
+        builder.Services.AddScoped<IRepositorioMesa, RepositorioMesaEmArquivo>();
+        builder.Services.AddScoped<IRepositorioProduto, RepositorioProdutoEmArquivo>();
+        builder.Services.AddScoped<IRepositorioConta, RepositorioContaEmArquivo>();
+
 
         var app = builder.Build();
 

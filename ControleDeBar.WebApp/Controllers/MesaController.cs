@@ -10,19 +10,19 @@ namespace ControleDeBar.WebApp.Controllers;
 [Route("mesas")]
 public class MesaController : Controller
 {
-    private readonly ContextoDados contextoDados;
-    private readonly IRepositorioMesa repositorioMesa;
+    private readonly ContextoDados ContextoDados;
+    private readonly IRepositorioMesa RepositorioMesa;
 
-    public MesaController()
+    public MesaController(ContextoDados contextoDados, IRepositorioMesa repositorioMesa)
     {
-        contextoDados = new ContextoDados(true);
-        repositorioMesa = new RepositorioMesaEmArquivo(contextoDados);
+        ContextoDados = contextoDados;
+        RepositorioMesa = repositorioMesa;
     }
 
     [HttpGet]
     public IActionResult Index()
     {
-        var registros = repositorioMesa.SelecionarRegistros();
+        var registros = RepositorioMesa.SelecionarRegistros();
 
         var visualizarVM = new VisualizarMesasViewModel(registros);
 
@@ -41,7 +41,7 @@ public class MesaController : Controller
     [ValidateAntiForgeryToken]
     public ActionResult Cadastrar(CadastrarMesaViewModel cadastrarVM)
     {
-        var registros = repositorioMesa.SelecionarRegistros();
+        var registros = RepositorioMesa.SelecionarRegistros();
 
         foreach (var item in registros)
         {
@@ -57,7 +57,7 @@ public class MesaController : Controller
 
         var entidade = cadastrarVM.ParaEntidade();
 
-        repositorioMesa.CadastrarRegistro(entidade);
+        RepositorioMesa.CadastrarRegistro(entidade);
 
         return RedirectToAction(nameof(Index));
     }
@@ -65,7 +65,7 @@ public class MesaController : Controller
     [HttpGet("editar/{id:guid}")]
     public ActionResult Editar(Guid id)
     {
-        var registroSelecionado = repositorioMesa.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioMesa.SelecionarRegistroPorId(id);
 
         var editarVM = new EditarMesaViewModel(
             id,
@@ -80,7 +80,7 @@ public class MesaController : Controller
     [ValidateAntiForgeryToken]
     public ActionResult Editar(Guid id, EditarMesaViewModel editarVM)
     {
-        var registros = repositorioMesa.SelecionarRegistros();
+        var registros = RepositorioMesa.SelecionarRegistros();
 
         foreach (var item in registros)
         {
@@ -96,7 +96,7 @@ public class MesaController : Controller
 
         var entidadeEditada = editarVM.ParaEntidade();
 
-        repositorioMesa.EditarRegistro(id, entidadeEditada);
+        RepositorioMesa.EditarRegistro(id, entidadeEditada);
 
         return RedirectToAction(nameof(Index));
     }
@@ -104,7 +104,7 @@ public class MesaController : Controller
     [HttpGet("excluir/{id:guid}")]
     public ActionResult Excluir(Guid id)
     {
-        var registroSelecionado = repositorioMesa.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioMesa.SelecionarRegistroPorId(id);
 
         var excluirVM = new ExcluirMesaViewModel(registroSelecionado.Id, registroSelecionado.Numero);
 
@@ -114,7 +114,7 @@ public class MesaController : Controller
     [HttpPost("excluir/{id:guid}")]
     public ActionResult ExcluirConfirmado(Guid id)
     {
-        repositorioMesa.ExcluirRegistro(id);
+        RepositorioMesa.ExcluirRegistro(id);
 
         return RedirectToAction(nameof(Index));
     }
@@ -122,7 +122,7 @@ public class MesaController : Controller
     [HttpGet("detalhes/{id:guid}")]
     public ActionResult Detalhes(Guid id)
     {
-        var registroSelecionado = repositorioMesa.SelecionarRegistroPorId(id);
+        var registroSelecionado = RepositorioMesa.SelecionarRegistroPorId(id);
 
         var detalhesVM = new DetalhesMesaViewModel(
             id,

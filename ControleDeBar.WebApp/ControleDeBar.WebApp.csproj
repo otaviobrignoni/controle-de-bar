@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\lib\bootstrap-5.3.6-dist\**" />
-    <Content Remove="wwwroot\lib\bootstrap-5.3.6-dist\**" />
-    <EmbeddedResource Remove="wwwroot\lib\bootstrap-5.3.6-dist\**" />
-    <None Remove="wwwroot\lib\bootstrap-5.3.6-dist\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ControleDeBar.Dominio\ControleDeBar.Dominio.csproj" />
     <ProjectReference Include="..\ControleDeBar.Infraestrutura.Arquivos\ControleDeBar.Infraestrutura.Arquivos.csproj" />
   </ItemGroup>
