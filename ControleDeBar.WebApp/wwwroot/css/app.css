@@ -1,4 +1,164 @@
-﻿body { background-color: #E8ECED; }
+:root {
+    --bg-main: #1e2124;
+    --bg-dark: #16181b;
+    --border-color: #444;
+    --card-bg: #2b2f33;
+    --accent: #66b2ff;
+    --accent-hover: #88ccff;
+    --text-light-colored: #a6e1fa;
+    --text-muted: #a0a0a0;
+}
+
+* {
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+h4 {
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-main);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    padding: 1rem 5vw;
+    background-color: var(--bg-dark) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #333;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+    .navbar-brand:hover {
+        color: var(--accent) !important;
+    }
+
+.navbar-nav .nav-link {
+    color: white !important;
+    background-color: transparent !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: var(--accent);
+        color: black;
+    }
+
+.navbar-nav .btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: black;
+    font-weight: bold;
+}
+
+    .navbar-nav .btn-primary:hover {
+        background-color: var(--accent-hover);
+        border-color: var(--accent-hover);
+        color: black;
+    }
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: var(--accent);
+}
+
+.form-control {
+    background-color: var(--bg-main);
+    border-color: var(--border-color);
+}
+
+.form-control, select {
+    background-color: var(--bg-main);
+    color: white !important;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+    .form-control:focus, select:focus {
+        background-color: var(--bg-main);
+        color: white !important;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 0.25rem rgba(102, 178, 255, 0.25);
+    }
+
+
+.form-group a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.form-select {
+    background-color: var(--bg-main);
+    border-color: var(--border-color);
+}
+
+.table {
+    background-color: var(--bg-dark);
+}
+
+.btn-primary {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+    .btn-primary .bi {
+        color: black !important;
+        font-weight: bolder !important;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--accent-hover) !important;
+        border-color: var(--accent-hover) !important;
+        color: black !important;
+    }
+
+.btn-outline-primary {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+    .btn-outline-primary .bi {
+        color: var(--accent) !important;
+    }
+
+    .btn-outline-primary:hover {
+        color: black !important;
+        background-color: var(--accent) !important;
+        border-color: var(--accent) !important;
+    }
+
+.text-primary {
+    color: var(--accent) !important;
+}
 
 .opcao-card {
     max-width: 40px;
