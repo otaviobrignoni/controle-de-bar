@@ -1,6 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
+using ControleDeBar.WebApp.ActionFilters;
 using ControleDeBar.WebApp.Extensions;
 using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;

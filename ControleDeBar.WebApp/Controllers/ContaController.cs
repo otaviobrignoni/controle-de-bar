@@ -7,6 +7,7 @@ using ControleDeBar.Infraestrura.Arquivos.ModuloMesa;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloConta;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloProduto;
+using ControleDeBar.WebApp.ActionFilters;
 using ControleDeBar.WebApp.Extensions;
 using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;

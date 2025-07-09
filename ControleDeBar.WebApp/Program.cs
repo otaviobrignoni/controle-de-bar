@@ -7,6 +7,7 @@ using ControleDeBar.Infraestrura.Arquivos.ModuloMesa;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloConta;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloProduto;
+using ControleDeBar.WebApp.ActionFilters;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ControleDeBar.WebApp;
@@ -17,7 +18,10 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews(options =>
+        {
+            options.Filters.Add<ValidarModeloAttribute>();
+        });
 
         builder.Services.AddScoped(_ => new ContextoDados(true));
         builder.Services.AddScoped<IRepositorioGarcom, RepositorioGarcomEmArquivo>();

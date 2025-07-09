@@ -1,6 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrura.Arquivos.ModuloMesa;
+using ControleDeBar.WebApp.ActionFilters;
 using ControleDeBar.WebApp.Extensions;
 using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
