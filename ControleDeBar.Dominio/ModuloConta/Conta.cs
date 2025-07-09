@@ -64,13 +64,7 @@ public class Conta : EntidadeBase<Conta>
 
     public Pedido RemoverPedido(Guid idPedido)
     {
-        Pedido pedidoSelecionado = null;
-
-        foreach (var p in Pedidos)
-        {
-            if (p.Id == idPedido)
-                pedidoSelecionado = p;
-        }
+        var pedidoSelecionado = Pedidos.Find(p => p.Id == idPedido);
 
         if (pedidoSelecionado == null)
             return null;

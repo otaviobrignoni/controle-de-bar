@@ -21,15 +21,9 @@ public class RepositorioContaEmArquivo : IRepositorioConta
         contexto.Salvar();
     }
 
-    public Conta SelecionarPorId(Guid idRegistro)
+    public Conta? SelecionarPorId(Guid idRegistro)
     {
-        foreach (var item in registros)
-        {
-            if (item.Id == idRegistro)
-                return item;
-        }
-
-        return null;
+        return registros.Find(e => e.Id == idRegistro);
     }
 
 
@@ -40,40 +34,16 @@ public class RepositorioContaEmArquivo : IRepositorioConta
 
     public List<Conta> SelecionarContasAbertas()
     {
-        var contasAbertas = new List<Conta>();
-
-        foreach (var item in registros)
-        {
-            if (item.EstaAberta)
-                contasAbertas.Add(item);
-        }
-
-        return contasAbertas;
+        return registros.Where(e => e.EstaAberta).ToList();
     }
 
     public List<Conta> SelecionarContasFechadas()
     {
-        var contasFechadas = new List<Conta>();
-
-        foreach (var item in registros)
-        {
-            if (!item.EstaAberta)
-                contasFechadas.Add(item);
-        }
-
-        return contasFechadas;
+        return registros.Where(e => !e.EstaAberta).ToList();
     }
 
     public List<Conta> SelecionarContasPorPeriodo(DateTime data)
     {
-        var contasDoPeriodo = new List<Conta>();
-
-        foreach (var item in registros)
-        {
-            if (item.Fechamento.Date == data.Date)
-                contasDoPeriodo.Add(item);
-        }
-
-        return contasDoPeriodo;
+        return registros.Where(e => e.Fechamento.Date == data.Date).ToList();
     }
 }

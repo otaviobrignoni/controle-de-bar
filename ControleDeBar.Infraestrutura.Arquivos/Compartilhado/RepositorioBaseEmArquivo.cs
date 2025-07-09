@@ -25,35 +25,28 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
 
     public bool EditarRegistro(Guid idRegistro, T registroEditado)
     {
-        foreach (T item in registros)
-        {
-            if (item.Id == idRegistro)
-            {
-                item.AtualizarRegistro(registroEditado);
+        T? registroSelecionado = SelecionarRegistroPorId(idRegistro);
 
-                contexto.Salvar();
+        if (registroSelecionado is null)
+            return false;
 
-                return true;
-            }
-        }
+        registroSelecionado.AtualizarRegistro(registroEditado);
+        contexto.Salvar();
 
-        return false;
+        return true;
     }
 
     public bool ExcluirRegistro(Guid idRegistro)
     {
-        T registroSelecionado = SelecionarRegistroPorId(idRegistro);
+        T? registroSelecionado = SelecionarRegistroPorId(idRegistro);
 
-        if (registroSelecionado != null)
-        {
-            registros.Remove(registroSelecionado);
+        if (registroSelecionado is null)
+            return false;
+        
+        registros.Remove(registroSelecionado);
+        contexto.Salvar();
 
-            contexto.Salvar();
-
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     public List<T> SelecionarRegistros()
@@ -61,14 +54,8 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
         return registros;
     }
 
-    public T SelecionarRegistroPorId(Guid idRegistro)
+    public T? SelecionarRegistroPorId(Guid idRegistro)
     {
-        foreach (T item in registros)
-        {
-            if (item.Id == idRegistro)
-                return item;
-        }
-
-        return null;
+        return registros.Find(e => e.Id == idRegistro);
     }
 }
