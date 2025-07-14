@@ -9,7 +9,7 @@ namespace ControleDeBar.Infraestrura.Arquivos.Compartilhado;
 
 public class ContextoDados
 {
-    private string pastaArmazenamento = "C:\\temp";
+    private string pastaArmazenamento = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "controle-de-bar");
     private string arquivoArmazenamento = "dados-controle-bar.json";
 
     public List<Mesa> Mesas { get; set; }
